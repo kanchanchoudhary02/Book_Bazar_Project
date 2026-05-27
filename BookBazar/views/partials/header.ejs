@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/css/style.css">
+
+<header class="site-header">
+  <nav class="navbar">
+    <a href="/" class="brand">📚 Book<span>Bazar</span></a>
+
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/books/browse">Browse Books</a>
+      <% if (currentUser) { %>
+        <a href="/books">Sell Book</a>
+        <a href="/cart">Cart</a>
+        <a href="/account">My Account</a>
+      <% } %>
+    </div>
+
+    <div class="nav-actions">
+      <% if (currentUser) { %>
+        <span class="welcome-text">Hi, <%= currentUser.name || 'User' %></span>
+        <form action="/logout" method="POST" class="inline-form">
+          <button type="submit" class="btn btn-light">Logout</button>
+        </form>
+      <% } else { %>
+        <a href="/login" class="btn btn-light">Login</a>
+        <a href="/register" class="btn btn-primary">Register</a>
+      <% } %>
+    </div>
+  </nav>
+</header>

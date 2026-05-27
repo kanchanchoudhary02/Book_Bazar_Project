@@ -1,0 +1,17 @@
+<svg width="1100" height="650" viewBox="0 0 1100 650" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#6d5dfc"/><stop offset="1" stop-color="#06b6d4"/></linearGradient></defs>
+  <rect width="1100" height="650" fill="#f7f3ea"/>
+  <rect x="45" y="28" width="1010" height="64" rx="32" fill="#ffffff" opacity=".92"/>
+  <text x="85" y="69" font-size="25" font-weight="800" fill="#1f2937">📚 Book<tspan fill="#6d5dfc">Bazar</tspan></text>
+  <text x="430" y="66" font-size="16" font-weight="700" fill="#374151">Home   Browse Books   Sell Book   Cart   My Account</text>
+  <rect x="65" y="130" width="970" height="250" rx="34" fill="url(#g)"/>
+  <text x="110" y="200" font-size="54" font-weight="900" fill="white">Buy and sell</text>
+  <text x="110" y="260" font-size="54" font-weight="900" fill="white">second-hand books.</text>
+  <text x="112" y="310" font-size="19" fill="#eef2ff">Register → Login → Home Page → Sell Book / Add to Cart</text>
+  <rect x="110" y="335" width="160" height="42" rx="21" fill="#fff7d6"/><text x="137" y="362" font-size="16" font-weight="800" fill="#7a4d00">Sell Your Book</text>
+  <text x="65" y="435" font-size="34" font-weight="900" fill="#1f2937">Latest Books</text>
+  <rect x="720" y="410" width="315" height="48" rx="16" fill="#ffffff"/><text x="744" y="440" font-size="15" fill="#6b7280">Search by title, author...</text>
+  <g transform="translate(65 480)"><rect width="300" height="135" rx="22" fill="#fff"/><rect width="300" height="72" rx="22" fill="#f0edff"/><text x="20" y="100" font-size="22" font-weight="900" fill="#1f2937">JavaScript Basics</text><text x="20" y="125" font-size="18" font-weight="900" fill="#4f46e5">₹250</text></g>
+  <g transform="translate(400 480)"><rect width="300" height="135" rx="22" fill="#fff"/><rect width="300" height="72" rx="22" fill="#f0edff"/><text x="20" y="100" font-size="22" font-weight="900" fill="#1f2937">DSA Notes</text><text x="20" y="125" font-size="18" font-weight="900" fill="#4f46e5">₹300</text></g>
+  <g transform="translate(735 480)"><rect width="300" height="135" rx="22" fill="#fff"/><rect width="300" height="72" rx="22" fill="#f0edff"/><text x="20" y="100" font-size="22" font-weight="900" fill="#1f2937">CSE Guide</text><text x="20" y="125" font-size="18" font-weight="900" fill="#4f46e5">₹180</text></g>
+</svg>

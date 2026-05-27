@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sell Book | Book Bazar</title>
+</head>
+<body>
+  <%- include("partials/header") %>
+
+  <main class="page" style="display:grid;place-items:center;">
+    <section class="form-card">
+      <h1>Sell Your Book</h1>
+      <p class="muted">Add book details. After submit, your book will appear on the home page and your account page.</p>
+
+      <% if (error) { %>
+        <div class="alert"><%= error %></div>
+      <% } %>
+
+      <form action="/books" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label>Book Title</label>
+          <input class="form-control" type="text" name="title" placeholder="Example: JavaScript Basics" required>
+        </div>
+
+        <div class="form-group">
+          <label>Author Name</label>
+          <input class="form-control" type="text" name="author" placeholder="Enter author name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Price</label>
+          <input class="form-control" type="number" name="price" placeholder="Enter price" min="0" required>
+        </div>
+
+        <div class="form-group">
+          <label>Condition</label>
+          <select class="form-control" name="condition" required>
+            <option value="">Select Condition</option>
+            <option value="New">New</option>
+            <option value="Like New">Like New</option>
+            <option value="Good">Good</option>
+            <option value="Old">Old</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Category</label>
+          <input class="form-control" type="text" name="category" placeholder="Example: CSE, Novel, School" required>
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" name="description" placeholder="Write short description" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Book Image</label>
+          <input class="form-control" type="file" name="image" accept="image/*" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:20px;">Add Book</button>
+      </form>
+    </section>
+  </main>
+
+  <%- include("partials/footer") %>
+</body>
+</html>

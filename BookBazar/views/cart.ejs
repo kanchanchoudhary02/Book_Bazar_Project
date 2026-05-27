@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cart | Book Bazar</title>
+</head>
+<body>
+  <%- include("partials/header") %>
+
+  <main class="page">
+    <div class="section-head">
+      <div>
+        <h2>My Cart</h2>
+        <p class="muted">Review books added to your cart.</p>
+      </div>
+      <a href="/" class="btn btn-light">Continue Shopping</a>
+    </div>
+
+    <% const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0); %>
+    <% const totalPrice = cartItems.reduce((sum, item) => sum + (item.bookId.price * item.quantity), 0); %>
+
+    <% if (cartItems && cartItems.length > 0) { %>
+      <section class="cart-wrapper">
+        <div class="grid">
+          <% cartItems.forEach(item => { %>
+            <article class="card">
+              <img class="book-img" src="/uploads/<%= item.bookId.image %>" alt="<%= item.bookId.title %>" onerror="this.src='https://via.placeholder.com/500x300/f0edff/4f46e5?text=Book+Bazar'">
+              <div class="card-body">
+                <h3><%= item.bookId.title %></h3>
+                <p class="muted">by <%= item.bookId.author %></p>
+                <div class="price">₹<%= item.bookId.price %></div>
+                <div class="badge-row">
+                  <span class="badge">Qty: <%= item.quantity %></span>
+                  <span class="badge"><%= item.bookId.category %></span>
+                </div>
+                <form action="/cart/remove/<%= item.bookId._id %>" method="POST">
+                  <button type="submit" class="btn btn-danger btn-block">Remove</button>
+                </form>
+              </div>
+            </article>
+          <% }) %>
+        </div>
+
+        <aside class="summary-card">
+          <h2>Order Summary</h2>
+          <div class="summary-row">
+            <span>Total Items</span>
+            <b><%= totalItems %></b>
+          </div>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <b>₹<%= totalPrice %></b>
+          </div>
+          <div class="summary-total">
+            <span>Total</span>
+            <span>₹<%= totalPrice %></span>
+          </div>
+          <button class="btn btn-primary btn-block" style="margin-top:18px;" type="button">Checkout Soon</button>
+        </aside>
+      </section>
+    <% } else { %>
+      <div class="empty-box" style="text-align:center;">
+        <h3>Your cart is empty.</h3>
+        <p class="muted" style="margin-top:8px;">Browse books and add your favourite books to cart.</p>
+      </div>
+    <% } %>
+  </main>
+
+  <%- include("partials/footer") %>
+</body>
+</html>

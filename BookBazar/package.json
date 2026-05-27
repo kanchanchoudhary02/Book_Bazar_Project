@@ -1,0 +1,29 @@
+{
+  "name": "book-bazar",
+  "version": "1.0.0",
+  "description": "Book Bazar is a beginner-friendly second-hand book marketplace built with Node.js, Express, EJS, MongoDB, JWT authentication, and Multer image upload.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "ejs",
+    "mongodb",
+    "book-marketplace"
+  ],
+  "author": "Kanchan Choudhary",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.4.2",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.4.1",
+    "multer": "^2.1.1"
+  }
+}

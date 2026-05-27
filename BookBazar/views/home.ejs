@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Bazar | Home</title>
+</head>
+<body>
+  <%- include("partials/header") %>
+
+  <main class="page">
+    <section class="hero">
+      <div>
+        <h1>Buy and sell second-hand books easily.</h1>
+        <p>Book Bazar helps students list old books, browse useful study material, and add books to cart in a simple full-stack web app.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
+          <% if (currentUser) { %>
+            <a href="/books" class="btn btn-light">Sell Your Book</a>
+            <a href="/account" class="btn btn-primary">My Account</a>
+          <% } else { %>
+            <a href="/register" class="btn btn-light">Create Account</a>
+            <a href="/login" class="btn btn-primary">Login</a>
+          <% } %>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>Project Flow</h3>
+        <p>Register → Login → Home Page → Sell Book / Add to Cart → Manage Account</p>
+      </div>
+    </section>
+
+    <div class="section-head">
+      <div>
+        <h2>Latest Books</h2>
+        <p class="muted">Total Books: <span id="bookCount"><%= books ? books.length : 0 %></span></p>
+      </div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search by title, author, category...">
+      </div>
+    </div>
+
+    <% if (books && books.length > 0) { %>
+      <div class="grid" id="booksContainer">
+        <% books.forEach(book => { %>
+          <article class="card book-card" data-title="<%= book.title ? book.title.toLowerCase() : '' %>" data-author="<%= book.author ? book.author.toLowerCase() : '' %>" data-category="<%= book.category ? book.category.toLowerCase() : '' %>">
+            <img class="book-img" src="/uploads/<%= book.image %>" alt="<%= book.title %>" onerror="this.src='https://via.placeholder.com/500x300/f0edff/4f46e5?text=Book+Bazar'">
+            <div class="card-body">
+              <h3><%= book.title %></h3>
+              <p class="muted">by <%= book.author %></p>
+              <div class="price">₹<%= book.price %></div>
+              <div class="badge-row">
+                <span class="badge"><%= book.condition %></span>
+                <span class="badge"><%= book.category %></span>
+              </div>
+              <p class="muted"><%= book.description %></p>
+              <div class="actions-row">
+                <form action="/cart/add/<%= book._id %>" method="POST">
+                  <button class="btn btn-success btn-block" type="submit">Add Cart</button>
+                </form>
+                <a class="btn btn-primary btn-block" href="/cart">Buy Now</a>
+              </div>
+            </div>
+          </article>
+        <% }) %>
+      </div>
+      <div id="noResult" class="empty-box hidden" style="text-align:center;margin-top:20px;">No matching book found.</div>
+    <% } else { %>
+      <div class="empty-box" style="text-align:center;">
+        <h3>No books available yet.</h3>
+        <p class="muted" style="margin-top:8px;">Login and add your first book for sale.</p>
+      </div>
+    <% } %>
+  </main>
+
+  <%- include("partials/footer") %>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const cards = document.querySelectorAll(".book-card");
+    const bookCount = document.getElementById("bookCount");
+    const noResult = document.getElementById("noResult");
+
+    if (searchInput) {
+      searchInput.addEventListener("input", () => {
+        const value = searchInput.value.toLowerCase().trim();
+        let visible = 0;
+
+        cards.forEach(card => {
+          const text = `${card.dataset.title} ${card.dataset.author} ${card.dataset.category}`;
+          const match = text.includes(value);
+          card.classList.toggle("hidden", !match);
+          if (match) visible++;
+        });
+
+        bookCount.textContent = visible;
+        if (noResult) noResult.classList.toggle("hidden", visible !== 0);
+      });
+    }
+  </script>
+</body>
+</html>

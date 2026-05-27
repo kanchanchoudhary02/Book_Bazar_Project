@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account | Book Bazar</title>
+</head>
+<body>
+  <%- include("partials/header") %>
+
+  <main class="page">
+    <div class="section-head">
+      <div>
+        <h2>My Account</h2>
+        <p class="muted">Manage your profile and uploaded books.</p>
+      </div>
+      <a href="/books" class="btn btn-primary">Add New Book</a>
+    </div>
+
+    <section class="account-grid">
+      <div>
+        <h2 style="margin-bottom:18px;">My Uploaded Books</h2>
+        <% if (books && books.length > 0) { %>
+          <div class="grid">
+            <% books.forEach(book => { %>
+              <article class="card">
+                <img class="book-img" src="/uploads/<%= book.image %>" alt="<%= book.title %>" onerror="this.src='https://via.placeholder.com/500x300/f0edff/4f46e5?text=Book+Bazar'">
+                <div class="card-body">
+                  <h3><%= book.title %></h3>
+                  <p class="muted">by <%= book.author %></p>
+                  <div class="price">₹<%= book.price %></div>
+                  <div class="badge-row">
+                    <span class="badge"><%= book.condition %></span>
+                    <span class="badge"><%= book.category %></span>
+                  </div>
+                  <form action="/books/delete/<%= book._id %>" method="POST">
+                    <button type="submit" class="btn btn-danger btn-block">Delete Book</button>
+                  </form>
+                </div>
+              </article>
+            <% }) %>
+          </div>
+        <% } else { %>
+          <div class="empty-box">
+            <h3>No uploaded books yet.</h3>
+            <p class="muted" style="margin-top:8px;">Click “Add New Book” to list your first book.</p>
+          </div>
+        <% } %>
+      </div>
+
+      <aside class="profile-card">
+        <h2>Profile</h2>
+        <p class="muted" style="margin-top:12px;"><b>Name:</b> <%= user.name %></p>
+        <p class="muted" style="margin-top:8px;"><b>Email:</b> <%= user.email %></p>
+        <p class="muted" style="margin-top:8px;"><b>Total Books:</b> <%= books.length %></p>
+        <form action="/logout" method="POST" style="margin-top:20px;">
+          <button class="btn btn-danger btn-block" type="submit">Logout</button>
+        </form>
+      </aside>
+    </section>
+  </main>
+
+  <%- include("partials/footer") %>
+</body>
+</html>

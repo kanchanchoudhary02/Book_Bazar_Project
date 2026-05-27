@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Book Bazar</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <main class="auth-page">
+    <div class="auth-card">
+      <a href="/" class="brand">📚 Book<span>Bazar</span></a>
+      <h1>Create account</h1>
+      <p class="muted">Join Book Bazar and start selling your old books.</p>
+
+      <% if (error) { %>
+        <div class="alert"><%= error %></div>
+      <% } %>
+
+      <form action="/register" method="POST">
+        <div class="form-group">
+          <label>Name</label>
+          <input class="form-control" type="text" name="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input class="form-control" type="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input class="form-control" type="password" name="password" placeholder="Create password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:20px;">Register</button>
+      </form>
+
+      <p class="muted" style="text-align:center;margin-top:18px;">Already have an account? <a href="/login" style="color:var(--primary);font-weight:900;">Login</a></p>
+    </div>
+  </main>
+</body>
+</html>
