@@ -5,10 +5,10 @@ Book Bazar is a beginner-friendly second-hand book marketplace. Users can regist
 ## Screenshots
 
 ### Home Page
-![Home Page](docs/screenshots/home.svg)
+![Home Page](./BookBazar/docs/screenshots/home.svg)
 
 ### Login Page
-![Login Page](docs/screenshots/login.svg)
+![Login Page](./BookBazar/docs/screenshots/login.svg)
 
 ## Features
 
